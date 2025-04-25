@@ -4,3 +4,5 @@ export const fetchDriverRides = async (driverId) => {
   const res = await axios.get(`/api/rides?driverId=${driverId}`);
   return res.data;
 };
+
+export const offerRide = async() => { };
