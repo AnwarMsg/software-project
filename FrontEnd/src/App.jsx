@@ -4,12 +4,14 @@ import Register from './pages/Register';
 import DriverDashboard from './pages/DriverDashboard';
 import OfferRideForm from './pages/OfferRideForm';
 import UserProfile from './pages/UserProfile';
+import Home from './pages/Home';
 
 function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<Home />} /> 
+        <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={<DriverDashboard />} />
         <Route path="/offer-ride" element={<OfferRideForm />} />
