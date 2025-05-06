@@ -10,8 +10,15 @@
     "preview": "vite preview"
   },
   "dependencies": {
+<<<<<<< HEAD
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
+=======
+    "axios": "^1.8.4",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "react-router-dom": "^7.5.1"
+>>>>>>> 91d7792 (Home, book button, header, cancel button, popups, filter, search, linked pages)
   },
   "devDependencies": {
     "@eslint/js": "^9.22.0",
