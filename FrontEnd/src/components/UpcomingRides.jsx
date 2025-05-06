@@ -1,4 +1,4 @@
-import useRides from '@/hooks/useRides';
+import useRides from '../Hooks/useRides';
 import RideCard from './RideCard';
 
 const UpcomingRides = ({ driverId }) => {

@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { offerRide } from '@/services/rideService';
-import { useAuth } from '@/hooks/useAuth';
+import { offerRide } from '../Services/rideService';
+import { useAuth } from '../Hooks/useAuth';
 
 const OfferRideForm = () => {
   const { user } = useAuth();
