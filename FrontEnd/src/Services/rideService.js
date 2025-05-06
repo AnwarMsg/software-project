@@ -5,4 +5,6 @@ export const fetchDriverRides = async (driverId) => {
   return res.data;
 };
 
-export const offerRide = async() => { };
+export const offerRide = async () => {
+
+};

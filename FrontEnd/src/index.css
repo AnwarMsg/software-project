@@ -491,3 +491,146 @@ animation: fadeOut 3s ease forwards;
 90% { opacity: 1; }
 100% { opacity: 0; transform: translateX(-50%) scale(1); }
 }
+
+.account-container {
+  margin-top: 120px;
+  position: relative;
+}
+
+.admin-button {
+  z-index: 10;
+  position: absolute;
+  right: 20px;
+  background-color: green;
+  color: white;
+  font-weight: bold;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.admin-button:hover {
+  background-color: darkgreen;
+}
+
+.client-dashboard h1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 3rem;
+  color: #135734;
+  margin-bottom: 100px;  
+  margin-top: 140px;
+}
+
+.client-dashboard p {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  text-align: center;
+  font-weight: 600;
+  color: #333333;
+  font-size: 1.6rem;
+}
+
+.client-dashboard h3 {
+  margin-top: 160px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.8rem;
+  color: #1f3376;
+  margin-bottom: 40px;
+}
+
+ul.ride-history {
+  margin-top: 40px;   
+  margin-bottom: 0;   
+  list-style-type: none; 
+  padding: 0;
+}
+
+ul.ride-history li {
+  display: flex;
+  justify-content: center;
+  font-size: 18px;
+  color: gray; 
+  font-family: 'Inter', sans-serif; 
+  margin-bottom: 20px; 
+}
+
+.client-dashboard h3 button{
+  position: absolute;
+  margin-left: 320px;
+  margin-top: 4px;
+  color: rgb(23, 85, 48);
+  cursor: pointer;
+  background: none;
+  font-size: 14px;
+}
+.ride-history-modal {
+  position: fixed;
+  top: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  z-index: 1000;
+}
+
+.ride-history-backdrop {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 70%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.ride-history-popup {
+  width: 30%;
+  background-color: #fff;
+  height: 100%;
+  padding: 20px;
+  box-shadow: -2px 0 5px rgba(0,0,0,0.3);
+  position: relative;
+  overflow-y: auto;
+  animation: slideIn 0.3s ease forwards;
+}
+
+.ride-history-popup h4 {
+  margin-top: 0;
+}
+
+.ride-history-list {
+  list-style-type: none;
+  padding: 0;
+}
+
+.ride-history-list li {
+  margin-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 5px;
+}
+
+.close-history {
+  background-color: rgb(23, 85, 48);
+  color: #fff;
+  border: none;
+  padding: 10px 15px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.close-history:hover {
+  background-color: rgb(17, 70, 38);
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}

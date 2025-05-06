@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { fetchDriverRides } from '@/services/rideService';
+import { fetchDriverRides } from '../Services/rideService';
 
 const useRides = (driverId) => {
   const [rides, setRides] = useState([]);
