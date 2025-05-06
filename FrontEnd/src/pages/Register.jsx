@@ -1,4 +1,3 @@
-// pages/Register.jsx
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import InputField from '../components/InputField';
@@ -22,9 +21,9 @@ function Register() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
-      <form className="bg-white p-8 rounded shadow-md w-80" onSubmit={handleRegister}>
-        <h2 className="text-2xl font-bold mb-6 text-center">Register</h2>
+    <div className="flex h-screen items-center justify-center bg-[#F1F7F6]">
+      <form className="bg-white p-8 rounded shadow-md w-96" onSubmit={handleRegister}>
+        <h2 className="text-3xl font-semibold mb-6 text-center text-[#2E4A3B]">Create Account</h2>
 
         <InputField
           type="text"
@@ -32,6 +31,7 @@ function Register() {
           value={form.name}
           onChange={handleChange}
           placeholder="Full Name"
+          className="mb-4"
         />
         <InputField
           type="email"
@@ -39,6 +39,7 @@ function Register() {
           value={form.email}
           onChange={handleChange}
           placeholder="Email"
+          className="mb-4"
         />
         <InputField
           type="password"
@@ -46,12 +47,14 @@ function Register() {
           value={form.password}
           onChange={handleChange}
           placeholder="Password"
+          className="mb-6"
         />
 
-        <Button text="Register" />
+        <Button text="Register" className="w-full bg-[#34D399] text-white py-2 rounded-md" />
 
         <p className="text-sm mt-4 text-center">
-          Already have an account? <Link to="/" className="text-blue-500">Login</Link>
+          Already have an account?{' '}
+          <Link to="/" className="text-[#34D399] hover:text-[#2E4A3B]">Login</Link>
         </p>
       </form>
     </div>

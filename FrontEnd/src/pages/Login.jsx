@@ -1,4 +1,3 @@
-// pages/Login.jsx
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 import InputField from '../components/InputField';
@@ -15,15 +14,17 @@ function Login() {
   };
 
   return (
-    <div className="flex h-screen items-center justify-center bg-gray-100">
-      <form className="bg-white p-8 rounded shadow-md w-80" onSubmit={handleLogin}>
-        <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
+    <div className="flex h-screen items-center justify-center bg-[#F1F7F6]">
+      <form className="bg-white p-8 rounded shadow-md w-96" onSubmit={handleLogin}>
+        <h2 className="text-3xl font-semibold mb-6 text-center text-[#2E4A3B]">Login</h2>
+        
         <InputField
           type="email"
           name="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           placeholder="Email"
+          className="mb-4"
         />
         <InputField
           type="password"
@@ -31,10 +32,14 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           placeholder="Password"
+          className="mb-6"
         />
-        <Button text="Log In" />
+        
+        <Button text="Log In" className="w-full bg-[#34D399] text-white py-2 rounded-md" />
+
         <p className="text-sm mt-4 text-center">
-          Don’t have an account? <Link to="/register" className="text-blue-500">Register</Link>
+          Don’t have an account?{' '}
+          <Link to="/register" className="text-[#34D399] hover:text-[#2E4A3B]">Register</Link>
         </p>
       </form>
     </div>
