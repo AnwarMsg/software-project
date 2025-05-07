@@ -13,10 +13,12 @@ import Typography from '@mui/material/Typography';
 import Stack from '@mui/material/Stack';
 import MuiCard from '@mui/material/Card';
 import { styled } from '@mui/material/styles';
-import ForgotPassword from './components/ForgotPassword';
+import ForgotPassword from '../components/ForgotPassword';
+import { useNavigate } from 'react-router-dom';
 import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
-import { GoogleIcon, FacebookIcon, SitemarkIcon } from './components/CustomIcons';
+import { GoogleIcon, FacebookIcon} from '../components/CustomIcons';
+import SitemarkIcon from '../components/SitemarkIcon';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -66,6 +68,7 @@ export default function SignIn(props) {
   const [passwordError, setPasswordError] = React.useState(false);
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
+  const navigate = useNavigate();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -75,17 +78,26 @@ export default function SignIn(props) {
     setOpen(false);
   };
 
+  
   const handleSubmit = (event) => {
-    if (emailError || passwordError) {
-      event.preventDefault();
-      return;
-    }
+    event.preventDefault();
+
+    const isValid = validateInputs();
+    if (!isValid) return;
+
     const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    const email = data.get('email');
+    const password = data.get('password');
+
+    console.log({ email, password });
+
+    // Simulate successful login
+    localStorage.setItem('isAuthenticated', 'true');
+
+    // Redirect to home page
+    navigate('/');
   };
+
 
   const validateInputs = () => {
     const email = document.getElementById('email');
@@ -182,7 +194,7 @@ export default function SignIn(props) {
               type="submit"
               fullWidth
               variant="contained"
-              onClick={validateInputs}
+              
             >
               Sign in
             </Button>

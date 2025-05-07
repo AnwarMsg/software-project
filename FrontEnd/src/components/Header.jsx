@@ -7,9 +7,9 @@ function Header() {
         <Link to="/" className="logo">DriveMe</Link>
         <nav className="nav">
           <Link to="/driver" className="nav-link">Driver</Link>
-          <Link to="/account" className="nav-link">Account</Link>
-          <Link to="/login" className="nav-link sign-in">Sign In</Link>
-          <Link to="/signup" className="nav-link sign-up">Sign Up</Link>
+          <Link to="/Account" className="nav-link">Account</Link>
+          <Link to="/Login" className="nav-link sign-in">Sign In</Link>
+          <Link to="/Register" className="nav-link sign-up">Sign Up</Link>
         </nav>
       </div>
     </header>

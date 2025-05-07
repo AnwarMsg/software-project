@@ -244,7 +244,7 @@ function Home() {
             <div className="popup">
               <p>You must be signed in to book a ride.</p>
               <div className="popup-actions">
-                <button onClick={() => navigate('/auth')}>Go to Sign In</button>
+                <button onClick={() => navigate('/login')}>Go to Sign In</button>
                 <button onClick={() => setShowAuthPopup(false)}>Cancel</button>
               </div>
             </div>
