@@ -1,4 +1,4 @@
-import ProfileOverview from '../components/ProfileOverveiw';
+import ProfileOverview from "../components/ProfileOverview";
 import UpcomingRides from '../components/UpcomingRides';
 import { useAuth } from '../Hooks/useAuth';
 
