@@ -1,4 +1,4 @@
-import { useAuth } from '@/hooks/useAuth';
+import { useAuth } from '../Hooks/useAuth';
 import { useState } from 'react';
 
 const UserProfile = () => {

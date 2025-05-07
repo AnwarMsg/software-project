@@ -1,6 +1,6 @@
-import ProfileOverview from '@/components/ProfileOverview';
-import UpcomingRides from '@/components/UpcomingRides';
-import { useAuth } from '@/hooks/useAuth';
+import ProfileOverview from '../components/ProfileOverveiw';
+import UpcomingRides from '../components/UpcomingRides';
+import { useAuth } from '../Hooks/useAuth';
 
 const DriverDashboard = () => {
   const { user } = useAuth();
