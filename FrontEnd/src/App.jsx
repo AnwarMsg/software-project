@@ -6,6 +6,7 @@ import OfferRideForm from './pages/OfferRideForm';
 import UserProfile from './pages/UserProfile';
 import Home from './pages/Home';
 import Account from './pages/Account';
+import PostRide from './pages/PostRide';
 
 function App() {
   return (
@@ -18,6 +19,7 @@ function App() {
         <Route path="/dashboard" element={<DriverDashboard />} />
         <Route path="/offer-ride" element={<OfferRideForm />} />
         <Route path="/profile" element={<UserProfile />} />
+        <Route path="/post-ride" element={<PostRide />} />
       </Routes>
     </Router>
   );
