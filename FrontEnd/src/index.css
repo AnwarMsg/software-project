@@ -399,6 +399,24 @@ transform: translateY(-2px) scale(1.05);
 box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
+/* Reset button inside filter popup */
+.filter-popup .reset-button {
+  padding: 0.6rem 1.2rem;
+  background-color: #e53935;
+  color: white;
+  border: none;
+  border-radius: 1.2rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.filter-popup .reset-button:hover {
+  background-color: #c62828;
+  transform: scale(1.05);
+}
+
 .overlay {
 position: fixed;
 top: 0;
@@ -514,17 +532,17 @@ animation: fadeOut 3s ease forwards;
   background-color: darkgreen;
 }
 
-.client-dashboard h1 {
+.client-dashboard h1, .admin-dashboard h1 {
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 3rem;
   color: #135734;
-  margin-bottom: 100px;  
+  margin-bottom: 0px;  
   margin-top: 140px;
 }
 
-.client-dashboard p {
+.client-dashboard p, .admin-dashboard p {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
   text-align: center;
   font-weight: 600;
@@ -633,4 +651,136 @@ ul.ride-history li {
   to {
     transform: translateX(0);
   }
+}
+/* Style for the driver request pop-up */
+.driver-request-popup {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 200px;
+  background-color: rgba(0, 0, 0, 0.7);
+  border-radius: 10px;
+  color: white;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+}
+
+/* Position for the buttons */
+.popup-buttons {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 20px;
+}
+
+/* Accept button */
+.accept-button {
+  background-color: green;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Decline button */
+.decline-button {
+  background-color: red;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+/* Add some hover effects for buttons */
+.accept-button:hover {
+  background-color: darkgreen;
+}
+
+.decline-button:hover {
+  background-color: darkred;
+}
+/* Admin Dashboard Styles */
+.admin-dashboard h2 {
+  text-align: center;
+  margin-top: 80px;
+  margin-bottom: 80px;
+  font-size: 2.2rem;
+  color: #135734;
+}
+
+.admin-dashboard ul {
+  list-style-type: none;
+  padding-left: 0;
+}
+
+.admin-dashboard li {
+  font-weight: bold;
+  color: black;
+  margin-bottom: 2.6rem;
+  font-size: 1.2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  width: 50%;
+  margin-left: 25%;
+}
+
+/* Added styles for driver names and remove button */
+.driver-name {
+  font-weight: bold;
+  color: rgb(34, 40, 37);
+  cursor: pointer;
+  text-align: left;
+  flex: 0.9;
+}
+
+.remove-button {
+  background-color: rgb(255, 255, 255);
+  color: red;
+  border-color: red;
+  border-width: 2px;
+  border-radius: 20px;
+  width: 0rem;
+  height: 2rem;
+  font-size: 1.2rem;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: border-color 0.3s ease, font-size 0.3s ease, height 0.3s ease;
+}
+
+.remove-button:hover {
+  height: 2.2rem;
+  border-color: red;
+  font-size: 1.3rem;
+}
+
+.driver-details-inline {
+  background-color: #f8f8f8;
+  border-left: Opx solid #135734;
+  padding: 0.3rem 1.4rem;
+  font-size: 0.95rem;
+  line-height: 1;
+  color: #333;
+  border-radius: 0.5rem;
+  min-width: 200px;
+}
+
+.driver-details-inline p {
+  margin: 0.3rem 0;
+  font-weight: 500;
+  font-size: medium;
 }

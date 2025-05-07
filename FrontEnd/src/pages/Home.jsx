@@ -85,6 +85,11 @@ function Home() {
       setFilters(filterData);
       setShowFilters(false);
     };
+
+    const handleResetFilters = () => {
+      setFilters(null);
+      setShowFilters(false);
+    };
   
     const confirmBooking = (rideId) => {
       const updatedRides = rides.map(ride => {
@@ -167,6 +172,7 @@ function Home() {
             show={showFilters}
             onClose={() => setShowFilters(false)}
             onApply={handleApplyFilters}
+            onReset={handleResetFilters}
           />
         )}
         <div className="posts-container">
