@@ -1,16 +1,18 @@
-const { PrismaClient } = require("@prisma/client");
+import express from "express";
+import cors from 'cors';
+import router from "./router.js";
 
-const prisma = new PrismaClient();
+const app = express();
 
-async function main() {
-    const newUser = await prisma.user.create({
-        data:{
-            email: "anwarmous@gmail.com"
-        }
-    });
+app.use(express.json());
+app.use(cors());
 
-    console.log(newUser);
-}
+app.use('/api', router);
 
-main().catch(e => {throw e;
-}).finally(async () => {await prisma.$disconnect();});
+const PORT = 3000;
+
+app.listen(PORT, () => {
+    console.log(`Server Running at http://localhost:${PORT}`);
+});
+
+export default app;
