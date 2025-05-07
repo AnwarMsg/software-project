@@ -20,8 +20,8 @@ const UserProfile = () => {
   };
 
   return (
-    <div className="max-w-md mx-auto p-6 bg-white shadow rounded-xl">
-      <h2 className="text-xl font-bold mb-4">My Profile</h2>
+    <div className="max-w-md mx-auto p-6 bg-[#F1F7F6] shadow-md rounded-xl">
+      <h2 className="text-3xl font-semibold mb-6 text-center text-[#2E4A3B]">My Profile</h2>
 
       {editMode ? (
         <form onSubmit={handleSubmit} className="space-y-4">
@@ -29,14 +29,14 @@ const UserProfile = () => {
             name="name"
             value={formData.name}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-3 border border-[#34D399] rounded-md"
             placeholder="Full Name"
           />
           <input
             name="email"
             value={formData.email}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-3 border border-[#34D399] rounded-md"
             placeholder="Email"
             type="email"
           />
@@ -44,17 +44,17 @@ const UserProfile = () => {
             name="phone"
             value={formData.phone || ''}
             onChange={handleChange}
-            className="w-full p-2 border rounded"
+            className="w-full p-3 border border-[#34D399] rounded-md"
             placeholder="Phone Number"
           />
-          <button type="submit" className="bg-blue-600 text-white px-4 py-2 rounded">Save</button>
+          <button type="submit" className="w-full bg-[#34D399] text-white px-4 py-2 rounded-md">Save</button>
         </form>
       ) : (
-        <div className="space-y-2">
+        <div className="space-y-4">
           <p><strong>Name:</strong> {user.name}</p>
           <p><strong>Email:</strong> {user.email}</p>
           <p><strong>Phone:</strong> {user.phone || 'Not set'}</p>
-          <button onClick={() => setEditMode(true)} className="mt-4 bg-gray-200 px-4 py-2 rounded">
+          <button onClick={() => setEditMode(true)} className="mt-4 w-full bg-[#34D399] text-white px-4 py-2 rounded-md">
             Edit Profile
           </button>
         </div>
