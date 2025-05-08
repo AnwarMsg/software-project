@@ -1,21 +1,60 @@
-import ProfileOverview from "../components/ProfileOverview";
-import UpcomingRides from '../components/UpcomingRides';
-import { useAuth } from '../Hooks/useAuth';
+import * as React from 'react';
 
-const DriverDashboard = () => {
-  const { user } = useAuth();
+import { alpha } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
+import Box from '@mui/material/Box';
+import Stack from '@mui/material/Stack';
+import AppNavbar from '../components/AppNavbar';
+import Header from '../components/Header';
+import MainGrid from '../components/MainGrid';
+import SideMenu from '../components/SideMenu';
+import AppTheme from '../shared-theme/AppTheme';
+import {
+  chartsCustomizations,
+  dataGridCustomizations,
+  datePickersCustomizations,
+  treeViewCustomizations,
+} from '../shared-theme/customizations';
 
-  return (
-    <div className="p-6 grid md:grid-cols-3 gap-4">
-      <section className="col-span-2">
-        <h2 className="text-xl font-bold mb-4">My Rides</h2>
-        <UpcomingRides driverId={user.id} />
-      </section>
-      <aside>
-        <ProfileOverview user={user} />
-      </aside>
-    </div>
-  );
+const xThemeComponents = {
+  ...chartsCustomizations,
+  ...dataGridCustomizations,
+  ...datePickersCustomizations,
+  ...treeViewCustomizations,
 };
 
-export default DriverDashboard;
+export default function Dashboard(props) {
+  return (
+    <AppTheme {...props} themeComponents={xThemeComponents}>
+      <CssBaseline enableColorScheme />
+      <Box sx={{ display: 'flex' }}>
+        <SideMenu />
+        <AppNavbar />
+        {/* Main content */}
+        <Box
+          component="main"
+          sx={(theme) => ({
+            flexGrow: 1,
+            backgroundColor: theme.vars
+              ? `rgba(${theme.vars.palette.background.defaultChannel} / 1)`
+              : alpha(theme.palette.background.default, 1),
+            overflow: 'auto',
+          })}
+        >
+          <Stack
+            spacing={2}
+            sx={{
+              alignItems: 'center',
+              mx: 3,
+              pb: 5,
+              mt: { xs: 8, md: 0 },
+            }}
+          >
+            <Header />
+            <MainGrid />
+          </Stack>
+        </Box>
+      </Box>
+    </AppTheme>
+  );
+}
