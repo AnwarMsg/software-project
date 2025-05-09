@@ -1,4 +1,5 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { ThemeProvider, createTheme } from '@mui/material';
 import Login from './pages/Login';
 import Register from './pages/Register';
 import DriverDashboard from './pages/DriverDashboard';
@@ -6,20 +7,46 @@ import OfferRideForm from './pages/OfferRideForm';
 import UserProfile from './pages/UserProfile';
 import Home from './pages/Home';
 import Account from './pages/Account';
+import PostRide from './pages/PostRide';
+import { Button } from '@mui/material'; 
+
+
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: '#388e3c',
+    },
+  },
+  components: {
+    MuiButton: {
+      styleOverrides: {
+        root: {
+          backgroundColor: '#388e3c',
+          '&:hover': {
+            backgroundColor: '#2e7d32',
+          },
+        },
+      },
+    },
+  },
+});
 
 function App() {
   return (
-    <Router>
-      <Routes>
-        <Route path="/" element={<Home />} /> 
-        <Route path="/account" element={<Account />} /> 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<DriverDashboard />} />
-        <Route path="/offer-ride" element={<OfferRideForm />} />
-        <Route path="/profile" element={<UserProfile />} />
-      </Routes>
-    </Router>
+    <ThemeProvider theme={theme}>
+      <Router>
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/account" element={<Account />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/dashboard" element={<DriverDashboard />} />
+          <Route path="/offer-ride" element={<OfferRideForm />} />
+          <Route path="/profile" element={<UserProfile />} />
+          <Route path="/post-ride" element={<PostRide />} />
+        </Routes>
+      </Router>
+    </ThemeProvider>
   );
 }
 
