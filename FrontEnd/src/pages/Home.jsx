@@ -4,150 +4,150 @@ import FilterPopup from '../components/FilterPopup.jsx';
 import Header from '../components/Header.jsx';
 
 function Home() {
-    const [isAuthenticated, setIsAuthenticated] = useState(false); // Default to false
-    const [showAuthPopup, setShowAuthPopup] = useState(false);
-    const [rides, setRides] = useState([
-      {
-        id: 3,
-        city: 'Casablanca',
-        driver: 'Mohamed',
-        'driver-sex': 'male',
-        car: 'BMW X5',
-        price: '30',
-        picture: 'https://images.unsplash.com/photo-1617780386600-ec45651d9f3c?auto=format&fit=crop&w=250&q=80',
-        capacity: 4,
-        booked: 2,
-        availability: 2,
-        date: '2025-04-22',
-        hour: '14:00'
-      },
-      {
-        id: 2,
-        city: 'Marrakesh',
-        driver: 'Rachid',
-        'driver-sex': 'male',
-        car: 'Audi A4',
-        price: '45',
-        picture: 'https://images.unsplash.com/photo-1571607389282-4c9b3d2aab7e?auto=format&fit=crop&w=250&q=80',
-        capacity: 3,
-        booked: 1,
-        availability: 2,
-        date: '2025-04-23',
-        hour: '16:30'
-      },
-      {
-        id: 1,
-        city: 'Rabat',
-        driver: 'Sara',
-        'driver-sex': 'female',
-        car: 'Toyota Corolla',
-        price: '25',
-        picture: 'https://images.unsplash.com/photo-1571607389282-4c9b3d2aab7e?auto=format&fit=crop&w=250&q=80',
-        capacity: 4,
-        booked: 0,
-        availability: 4,
-        date: '2025-04-24',
-        hour: '12:15'
-      },
-      {
-        id: 4,
-        city: 'Fes',
-        driver: 'Youssef',
-        'driver-sex': 'male',
-        car: 'Hyundai Elantra',
-        price: '28',
-        picture: 'https://images.unsplash.com/photo-1602330030409-7b41b352fa4e?auto=format&fit=crop&w=250&q=80',
-        capacity: 5,
-        booked: 0,
-        availability: 5,
-        date: '2025-04-25',
-        hour: '09:45'
-      }
-    ]);
-  
-    const [search, setSearch] = useState('');
-    const [showFilters, setShowFilters] = useState(false);
-    const [filters, setFilters] = useState(null);
-    const [confirmationPopup, setConfirmationPopup] = useState(null); // { type: 'book' | 'cancel', rideId }
-    const [successPopup, setSuccessPopup] = useState(null); // { message: string }
-  
-    const navigate = useNavigate(); // Hook to navigate programmatically
+  const [isAuthenticated, setIsAuthenticated] = useState(false); // Default to false
+  const [showAuthPopup, setShowAuthPopup] = useState(false);
+  const [rides, setRides] = useState([
+    {
+      id: 3,
+      city: 'Casablanca',
+      driver: 'Mohamed',
+      'driver-sex': 'male',
+      car: 'BMW X5',
+      price: '30',
+      picture: 'https://images.unsplash.com/photo-1617780386600-ec45651d9f3c?auto=format&fit=crop&w=250&q=80',
+      capacity: 4,
+      booked: 2,
+      availability: 2,
+      date: '2025-04-22',
+      hour: '14:00'
+    },
+    {
+      id: 2,
+      city: 'Marrakesh',
+      driver: 'Rachid',
+      'driver-sex': 'male',
+      car: 'Audi A4',
+      price: '45',
+      picture: 'https://images.unsplash.com/photo-1571607389282-4c9b3d2aab7e?auto=format&fit=crop&w=250&q=80',
+      capacity: 3,
+      booked: 1,
+      availability: 2,
+      date: '2025-04-23',
+      hour: '16:30'
+    },
+    {
+      id: 1,
+      city: 'Rabat',
+      driver: 'Sara',
+      'driver-sex': 'female',
+      car: 'Toyota Corolla',
+      price: '25',
+      picture: 'https://images.unsplash.com/photo-1571607389282-4c9b3d2aab7e?auto=format&fit=crop&w=250&q=80',
+      capacity: 4,
+      booked: 0,
+      availability: 4,
+      date: '2025-04-24',
+      hour: '12:15'
+    },
+    {
+      id: 4,
+      city: 'Fes',
+      driver: 'Youssef',
+      'driver-sex': 'male',
+      car: 'Hyundai Elantra',
+      price: '28',
+      picture: 'https://images.unsplash.com/photo-1602330030409-7b41b352fa4e?auto=format&fit=crop&w=250&q=80',
+      capacity: 5,
+      booked: 0,
+      availability: 5,
+      date: '2025-04-25',
+      hour: '09:45'
+    }
+  ]);
 
-    useEffect(() => {
-      // Check if the user is logged in (authentication check)
-      const authStatus = localStorage.getItem("isAuthenticated");
-      if (authStatus === "true") {
-        setIsAuthenticated(true);
-      }
-    }, []);
-  
-    const handleApplyFilters = (filterData) => {
-      setFilters(filterData);
-      setShowFilters(false);
-    };
+  const [search, setSearch] = useState('');
+  const [showFilters, setShowFilters] = useState(false);
+  const [filters, setFilters] = useState(null);
+  const [confirmationPopup, setConfirmationPopup] = useState(null); // { type: 'book' | 'cancel', rideId }
+  const [successPopup, setSuccessPopup] = useState(null); // { message: string }
 
-    const handleResetFilters = () => {
-      setFilters(null);
-      setShowFilters(false);
-    };
-  
-    const confirmBooking = (rideId) => {
-      const updatedRides = rides.map(ride => {
-        if (ride.id === rideId && ride.availability > 0) {
-          return {
-            ...ride,
-            booked: ride.booked + 1,
-            availability: ride.capacity - (ride.booked + 1),
-            isBooked: true
-          };
-        }
-        return ride;
-      });
-      setRides(updatedRides);
-      setConfirmationPopup(null);
-      setSuccessPopup({ message: 'Booking successful!' });
-      setTimeout(() => setSuccessPopup(null), 3000);
-    };
-  
-    const confirmCancellation = (rideId) => {
-      const updatedRides = rides.map(ride => {
-        if (ride.id === rideId && ride.isBooked) {
-          const newBooked = Math.max(ride.booked - 1, 0);
-          return {
-            ...ride,
-            booked: newBooked,
-            availability: ride.capacity - newBooked,
-            isBooked: false
-          };
-        }
-        return ride;
-      });
-      setRides(updatedRides);
-      setConfirmationPopup(null);
-      setSuccessPopup({ message: 'Cancellation successful!' });
-      setTimeout(() => setSuccessPopup(null), 3000);
-    };
-  
-    const filteredRides = rides.filter((ride) => {
-      const matchesCity = ride.city.toLowerCase().includes(search.toLowerCase());
-  
-      if (!filters) return matchesCity;
-  
-      const price = parseInt(ride.price);
-      const min = parseInt(filters.minPrice) || 0;
-      const max = parseInt(filters.maxPrice) || Infinity;
-  
-      return (
-        matchesCity &&
-        price >= min &&
-        price <= max &&
-        (filters.date ? ride.date === filters.date : true) &&
-        (filters.hour ? ride.hour === filters.hour : true) &&
-        (filters.sex ? ride["driver-sex"] === filters.sex : true)
-      );
+  const navigate = useNavigate(); // Hook to navigate programmatically
+
+  useEffect(() => {
+    // Check if the user is logged in (authentication check)
+    const authStatus = localStorage.getItem("isAuthenticated");
+    if (authStatus === "true") {
+      setIsAuthenticated(true);
+    }
+  }, []);
+
+  const handleApplyFilters = (filterData) => {
+    setFilters(filterData);
+    setShowFilters(false);
+  };
+
+  const handleResetFilters = () => {
+    setFilters(null);
+    setShowFilters(false);
+  };
+
+  const confirmBooking = (rideId) => {
+    const updatedRides = rides.map(ride => {
+      if (ride.id === rideId && ride.availability > 0) {
+        return {
+          ...ride,
+          booked: ride.booked + 1,
+          availability: ride.capacity - (ride.booked + 1),
+          isBooked: true
+        };
+      }
+      return ride;
     });
-  
+    setRides(updatedRides);
+    setConfirmationPopup(null);
+    setSuccessPopup({ message: 'Booking successful!' });
+    setTimeout(() => setSuccessPopup(null), 3000);
+  };
+
+  const confirmCancellation = (rideId) => {
+    const updatedRides = rides.map(ride => {
+      if (ride.id === rideId && ride.isBooked) {
+        const newBooked = Math.max(ride.booked - 1, 0);
+        return {
+          ...ride,
+          booked: newBooked,
+          availability: ride.capacity - newBooked,
+          isBooked: false
+        };
+      }
+      return ride;
+    });
+    setRides(updatedRides);
+    setConfirmationPopup(null);
+    setSuccessPopup({ message: 'Cancellation successful!' });
+    setTimeout(() => setSuccessPopup(null), 3000);
+  };
+
+  const filteredRides = rides.filter((ride) => {
+    const matchesCity = ride.city.toLowerCase().includes(search.toLowerCase());
+
+    if (!filters) return matchesCity;
+
+    const price = parseInt(ride.price);
+    const min = parseInt(filters.minPrice) || 0;
+    const max = parseInt(filters.maxPrice) || Infinity;
+
     return (
+      matchesCity &&
+      price >= min &&
+      price <= max &&
+      (filters.date ? ride.date === filters.date : true) &&
+      (filters.hour ? ride.hour === filters.hour : true) &&
+      (filters.sex ? ride["driver-sex"] === filters.sex : true)
+    );
+  });
+
+  return (
     <div>
       <Header />
       <div className="main-content">
@@ -232,13 +232,13 @@ function Home() {
             </div>
           </div>
         )}
-  
+
         {successPopup && (
           <div className="success-popup">
             {successPopup.message}
           </div>
         )}
-  
+
         {showAuthPopup && (
           <div className="overlay">
             <div className="popup">
@@ -251,8 +251,8 @@ function Home() {
           </div>
         )}
       </div>
-      </div>
-    );
-  }
-  
-  export default Home;
+    </div>
+  );
+}
+
+export default Home;
