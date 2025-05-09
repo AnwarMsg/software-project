@@ -6,6 +6,9 @@ import ClearIcon from '@mui/icons-material/Clear';
 import HomeIcon from '@mui/icons-material/Home';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { Link } from 'react-router-dom'; // Import Link for routing
+import ProfileOverview from '../components/ProfileOverview';
+import UpcomingRides from '../components/UpcomingRides';
+import { useAuth } from '../Hooks/useAuth';
 
 // Styled components for the design
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
