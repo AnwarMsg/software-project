@@ -98,8 +98,9 @@ function Header() {
               ) : (
                 <Button variant="contained" href="/login" sx={{
                   backgroundColor: '#fff', color: '#14653c', fontWeight: 'bolder', fontSize: '1.4rem',
-                  textTransform: 'none', borderRadius: '20px', 
-                  '&:hover': {backgroundColor: '#14653c', color: '#fff'}}}>
+                  textTransform: 'none', borderRadius: '20px',
+                  '&:hover': { backgroundColor: '#14653c', color: '#fff' }
+                }}>
                   <HowToRegIcon />
                 </Button>
               )}

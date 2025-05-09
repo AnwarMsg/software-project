@@ -9,6 +9,8 @@ import { Link } from 'react-router-dom'; // Import Link for routing
 import ProfileOverview from '../components/ProfileOverview';
 import UpcomingRides from '../components/UpcomingRides';
 import { useAuth } from '../Hooks/useAuth';
+import Header from '../components/Header';
+import PostRide from './PostRide';
 
 // Styled components for the design
 const StyledTableContainer = styled(TableContainer)(({ theme }) => ({
@@ -29,15 +31,6 @@ const StyledTable = styled(Table)(({ theme }) => ({
   },
 }));
 
-const Header = styled(Box)(({ theme }) => ({
-  backgroundColor: '#2d6a4f',
-  padding: theme.spacing(2),
-  borderRadius: '12px',
-  color: 'white',
-  marginBottom: theme.spacing(3),
-  textAlign: 'center',
-  boxShadow: '0 4px 8px rgba(0, 0, 0, 0.2)',
-}));
 
 const ActionButton = styled(Button)(({ theme }) => ({
   margin: theme.spacing(1),
@@ -82,21 +75,9 @@ export default function DriverDashboard() {
   return (
     <Box sx={{ padding: 4 }}>
       {/* Navigation Bar */}
-      <NavigationBar>
-        <Link to="/Home" style={{ textDecoration: 'none' }}>
-          <IconButton color="primary">
-            <HomeIcon fontSize="large" />
-          </IconButton>
-        </Link>
-        <Typography variant="h4">Driver Dashboard</Typography>
-        <Link to="/UserProfile" style={{ textDecoration: 'none' }}>
-          <IconButton color="primary">
-            <AccountCircleIcon fontSize="large" />
-          </IconButton>
-        </Link>
-      </NavigationBar>
-
-      <StyledTableContainer component={Paper}>
+      <Header />
+      <PostRide />
+      <StyledTableContainer component={Paper} sx={{ marginTop: '100px', width: '96.8%', }}>
         <StyledTable aria-label="driver dashboard table">
           <TableHead>
             <TableRow>
