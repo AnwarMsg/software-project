@@ -52,16 +52,20 @@ export default function MainGrid() {
       <Typography component="h2" variant="h6" sx={{ mb: 2 }}>
         Overview
       </Typography>
-      <Grid
-        container
-        spacing={2}
-        columns={12}
-        sx={{ mb: (theme) => theme.spacing(2) }}
-      >
+      <Grid container spacing={2} columns={12} sx={{ mb: (theme) => theme.spacing(2) }}>
         {data.map((card, index) => (
-          <Grid key={index} size={{ xs: 12, sm: 6, lg: 3 }}>
+          <React.Fragment key={index}>
+            <Grid key="earnings" size={{ xs: 12, sm: 6, lg: 3 }}>
+              <StatCard title="Total Earnings" value="$500" />
+            </Grid>
+            <Grid key="upcomingRides" size={{ xs: 12, sm: 6, lg: 3 }}>
+              <UpcomingRides /> {/* Custom Component for upcoming rides */}
+            </Grid>
+            <Grid size={{ xs: 12, md: 6 }}>
+              <SessionsChart /> {/* Driver's sessions or completed trips chart */}
+            </Grid>
             <StatCard {...card} />
-          </Grid>
+          </React.Fragment>
         ))}
         <Grid size={{ xs: 12, sm: 6, lg: 3 }}>
           <HighlightedCard />

@@ -1,14 +1,15 @@
 import * as React from 'react';
-
 import { alpha } from '@mui/material/styles';
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import { MenuItem, Typography, Grid } from '@mui/material';
 import AppNavbar from '../components/AppNavbar';
 import Header from '../components/Header';
 import MainGrid from '../components/MainGrid';
 import SideMenu from '../components/SideMenu';
 import AppTheme from '../shared-theme/AppTheme';
+import DriverEarningsChart from '../components/DriverEarningsChart'; // <-- Import DriverEarningsChart here
 import {
   chartsCustomizations,
   dataGridCustomizations,
@@ -23,12 +24,18 @@ const xThemeComponents = {
   ...treeViewCustomizations,
 };
 
-export default function Dashboard(props) {
+export default function DriverDashboard(props) {
   return (
     <AppTheme {...props} themeComponents={xThemeComponents}>
       <CssBaseline enableColorScheme />
       <Box sx={{ display: 'flex' }}>
-        <SideMenu />
+        <SideMenu>
+          <MenuItem>Dashboard Overview</MenuItem>
+          <MenuItem>Upcoming Rides</MenuItem>
+          <MenuItem>Earnings</MenuItem>
+          <MenuItem>Profile</MenuItem>
+          <MenuItem>Settings</MenuItem>
+        </SideMenu>
         <AppNavbar />
         {/* Main content */}
         <Box
@@ -50,8 +57,21 @@ export default function Dashboard(props) {
               mt: { xs: 8, md: 0 },
             }}
           >
-            <Header />
-            <MainGrid />
+            <Header>
+              <Typography variant="h6">Welcome, Driver</Typography>
+              <Typography variant="subtitle2">Total Earnings: $500</Typography>
+            </Header>
+            <MainGrid>
+              <Grid item>
+                <DriverEarningsChart /> {/* Custom component for earnings chart */}
+              </Grid>
+              <Grid item>
+                <UpcomingRides /> {/* Custom component for upcoming rides */}
+              </Grid>
+              <Grid item>
+                <TripHistory /> {/* Custom component for completed trip history */}
+              </Grid>
+            </MainGrid>
           </Stack>
         </Box>
       </Box>

@@ -53,7 +53,13 @@ export default function SideMenu() {
           flexDirection: 'column',
         }}
       >
-        <MenuContent />
+        <MenuContent>
+        <MenuItem>Dashboard Overview</MenuItem>
+        <MenuItem>Upcoming Rides</MenuItem>
+        <MenuItem>Earnings</MenuItem>
+        <MenuItem>Profile</MenuItem>
+        <MenuItem>Settings</MenuItem>
+      </MenuContent>
         <CardAlert />
       </Box>
       <Stack
