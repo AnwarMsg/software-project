@@ -14,9 +14,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} /> 
         <Route path="/account" element={<Account />} /> 
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/dashboard" element={<DriverDashboard />} />
+        <Route path="/Login" element={<Login />} />
+        <Route path="/Register" element={<Register />} />
+        <Route path="/DriverDashboard" element={<DriverDashboard />} />
         <Route path="/offer-ride" element={<OfferRideForm />} />
         <Route path="/profile" element={<UserProfile />} />
         <Route path="/post-ride" element={<PostRide />} />
