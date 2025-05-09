@@ -1,12 +1,9 @@
 import { alpha } from '@mui/material/styles';
-
-import {
-  pickersYearClasses,
-  pickersMonthClasses,
-  pickersDayClasses,
-} from '@mui/x-date-pickers';
+import { pickersYearClasses } from '@mui/x-date-pickers';
+import { pickersMonthClasses } from '@mui/x-date-pickers';
+import { pickersDayClasses } from '@mui/x-date-pickers';
 import { menuItemClasses } from '@mui/material/MenuItem';
-import { gray, brand } from '../shared-theme/themePrimitives';
+import { gray, brand } from "./themePrimitives.js";
 
 /* eslint-disable import/prefer-default-export */
 export const datePickersCustomizations = {
@@ -62,7 +59,8 @@ export const datePickersCustomizations = {
         '&:hover': {
           backgroundColor: (theme.vars || theme).palette.action.hover,
         },
-        [`&.${pickersMonthClasses.selected}`]: {
+        [`&;
+    ,selected}`]: {
           backgroundColor: gray[700],
           fontWeight: theme.typography.fontWeightMedium,
         },
@@ -70,14 +68,16 @@ export const datePickersCustomizations = {
           outline: `3px solid ${alpha(brand[500], 0.5)}`,
           outlineOffset: '2px',
           backgroundColor: 'transparent',
-          [`&.${pickersMonthClasses.selected}`]: { backgroundColor: gray[700] },
+          [`&;
+      ,selected}`]: { backgroundColor: gray[700] },
         },
         ...theme.applyStyles('dark', {
           color: (theme.vars || theme).palette.grey[300],
           '&:hover': {
             backgroundColor: (theme.vars || theme).palette.action.hover,
           },
-          [`&.${pickersMonthClasses.selected}`]: {
+          [`&;
+      ,selected}`]: {
             color: (theme.vars || theme).palette.common.black,
             fontWeight: theme.typography.fontWeightMedium,
             backgroundColor: gray[300],
@@ -86,7 +86,8 @@ export const datePickersCustomizations = {
             outline: `3px solid ${alpha(brand[500], 0.5)}`,
             outlineOffset: '2px',
             backgroundColor: 'transparent',
-            [`&.${pickersMonthClasses.selected}`]: { backgroundColor: gray[300] },
+            [`&;
+        ,selected}`]: { backgroundColor: gray[300] },
           },
         }),
       }),

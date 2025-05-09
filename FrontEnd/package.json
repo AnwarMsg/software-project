@@ -10,11 +10,16 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@mui/material": "^7.1.0",
+    "@mui/system": "^7.1.0",
     "@mui/x-charts": "^8.3.0",
     "@mui/x-data-grid": "^8.3.0",
+    "@mui/x-date-pickers": "^5.0.20",
+    "@mui/x-tree-view": "^8.3.0",
+    "@react-spring/web": "^9.7.5",
     "axios": "^1.9.0",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-router-dom": "^7.5.3"
   },
   "devDependencies": {

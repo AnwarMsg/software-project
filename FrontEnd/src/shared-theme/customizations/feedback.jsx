@@ -1,7 +1,5 @@
 import { alpha } from '@mui/material/styles';
-import { gray, orange } from '../themePrimitives';
-
-/* eslint-disable import/prefer-default-export */
+import { gray, orange } from "./themePrimitives.js";
 export const feedbackCustomizations = {
   MuiAlert: {
     styleOverrides: {
