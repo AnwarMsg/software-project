@@ -19,6 +19,8 @@ import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { GoogleIcon, FacebookIcon} from '../components/CustomIcons';
 import SitemarkIcon from '../components/SitemarkIcon';
+import { useDispatch } from 'react-redux';
+import { LoginUser } from '../Redux/features/auth/LoginReducer';
 
 const Card = styled(MuiCard)(({ theme }) => ({
   display: 'flex',
@@ -69,6 +71,7 @@ export default function SignIn(props) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [open, setOpen] = React.useState(false);
   const navigate = useNavigate();
+  const dispatch = useDispatch();
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -88,14 +91,18 @@ export default function SignIn(props) {
     const data = new FormData(event.currentTarget);
     const email = data.get('email');
     const password = data.get('password');
+    const data2 = { email, password};
 
     console.log({ email, password });
 
     // Simulate successful login
-    localStorage.setItem('isAuthenticated', 'true');
+    dispatch(LoginUser(data2)).then((res) => {
+      let loggedIn = res.payload.islogged;
+      if (loggedIn) {
+        navigate("/")
+      }
+    })
 
-    // Redirect to home page
-    navigate('/');
   };
 
 

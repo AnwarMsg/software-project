@@ -7,6 +7,7 @@ import Grid from "@mui/material/Grid";
 import HomeCards from '../components/HomeCards.jsx';
 import Pagination from '@mui/material/Pagination';
 import FloatingActionMenu from '../components/FloatingActionMenu.jsx';
+import { useSelector } from 'react-redux';
 
 function Home() {
     const [isAuthenticated, setIsAuthenticated] = useState(false); // Default to false
@@ -95,16 +96,22 @@ function Home() {
     const itemsPerPage = 12;
 
     const navigate = useNavigate(); // Hook to navigate programmatically
+    const [ath, setAth] = useState(false)
+
+    const token = useSelector(state => state.LoginRedux.islogged);
 
     useEffect(() => {
       // Check if the user is logged in (authentication check)
-      const authStatus = localStorage.getItem("isAuthenticated");
-      if (authStatus === "true") {
-        setIsAuthenticated(true);
+      if(localStorage.hasOwnProperty("user")) {
+        setAth(true)
+      } else {
+        setAth(false)
       }
+      
+      setIsAuthenticated(ath);
       const storedReviews = JSON.parse(localStorage.getItem("userReviews")) || [];
       setUserReviews(storedReviews);
-    }, []);
+    }, [token]);
   
     const handleApplyFilters = (filterData) => {
       setFilters(filterData);

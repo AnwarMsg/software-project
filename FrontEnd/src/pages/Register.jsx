@@ -17,6 +17,9 @@ import AppTheme from '../shared-theme/AppTheme';
 import ColorModeSelect from '../shared-theme/ColorModeSelect';
 import { GoogleIcon, FacebookIcon} from '../components/CustomIcons';
 import SitemarkIcon from '../components/SitemarkIcon';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
+import { addUser } from '../Redux/features/auth/RegisterReducer';
 
 
 const Card = styled(MuiCard)(({ theme }) => ({
@@ -68,6 +71,8 @@ export default function SignUp(props) {
   const [passwordErrorMessage, setPasswordErrorMessage] = React.useState('');
   const [nameError, setNameError] = React.useState(false);
   const [nameErrorMessage, setNameErrorMessage] = React.useState('');
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const validateInputs = () => {
     const email = document.getElementById('email');
@@ -112,6 +117,16 @@ export default function SignUp(props) {
       return;
     }
     const data = new FormData(event.currentTarget);
+    dispatch(addUser({name: data.get('name'), email: data.get('email'), password: data.get('password'),
+    })).then((res) => {
+      let error = res.payload.error;
+      if(error) {
+        setEmailError(true);
+        setEmailErrorMessage("Email Already In Use.");
+      } else {
+        navigate("/Login");
+      }
+    })
     console.log({
       name: data.get('name'),
       lastName: data.get('lastName'),

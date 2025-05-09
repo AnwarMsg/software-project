@@ -29,6 +29,8 @@ function HomeCards({ ride, onBookCancel, isAuthenticated }) {
   const [reviews, setReviews] = useState([
     "Great ride and clean car!",
     "Driver was on time and friendly.",
+    "Good Driver",
+    "Extremely Rude Driver"
   ]);
   const [shareDialogOpen, setShareDialogOpen] = useState(false);
   const [copied, setCopied] = useState(false);
@@ -65,12 +67,28 @@ function HomeCards({ ride, onBookCancel, isAuthenticated }) {
 
   const handleOpenReviews = () => setReviewDialogOpen(true);
   const handleCloseReviews = () => setReviewDialogOpen(false);
+  const [results, setResults] = useState(null);
+
   const handleReviewSubmit = () => {
     if (newReview.trim()) {
       setReviews([...reviews, newReview.trim()]);
       setNewReview('');
     }
   };
+
+  const analyzeTexts = async () => {
+    const res = await fetch('http://localhost:3000/api/ai', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ reviews }),
+    });
+    const data = await res.json();
+    setResults(data);
+    console.log(data);
+    console.log(results);
+  }
+
+
 
   const handleOpenShare = () => setShareDialogOpen(true);
   const handleCloseShare = () => {
@@ -292,14 +310,38 @@ function HomeCards({ ride, onBookCancel, isAuthenticated }) {
             </IconButton>
           </Box>
         ))}
+        {results && (
+          <Box sx={{ textAlign: 'center', mb: 2 }}>
+            <Typography variant="subtitle1" sx={{ color: '#90caf9' }}>
+              Average AI Score: {results.averageScore.toFixed(2)}
+            </Typography>
+            <Typography variant="body2" sx={{ color: '#ccc' }}>
+              AI: {results.results.map((r, i) => `${r.sentiment}`).join(', ')}
+            </Typography>
+          </Box>
+        )}
+        <IconButton
+        onClick={analyzeTexts}
+        sx={{
+          backgroundColor: '#14653c',
+          '&:hover': { backgroundColor: '#0f4d2c' },
+          color: '#fff',
+          borderRadius: '20px',
+          padding: '10px',
+          width: '200px',
+          marginLeft: '180px',
+          textAlign: 'center'
+        }}
+      >Analyze Reviews
+      </IconButton>
         <Box sx={{
-          position: 'absolute',
           bottom: 16,
           left: 24,
           right: 24,
           display: 'flex',
           alignItems: 'center',
           gap: 1,
+          marginTop: '20px'
         }}>
           <TextField
             placeholder="Write a review..."
