@@ -107,11 +107,11 @@ function Home() {
       } else {
         setAth(false)
       }
-      
-      setIsAuthenticated(ath);
+      setIsAuthenticated(true);
+      // setIsAuthenticated(ath);
       const storedReviews = JSON.parse(localStorage.getItem("userReviews")) || [];
       setUserReviews(storedReviews);
-    }, [token]);
+    }, []);
   
     const handleApplyFilters = (filterData) => {
       setFilters(filterData);

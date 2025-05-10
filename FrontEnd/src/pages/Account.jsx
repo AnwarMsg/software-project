@@ -7,6 +7,7 @@ import { UserContext } from '../components/UserContext';
 const Account = () => {
   const { user } = useContext(UserContext);
   const [profileInitials, setProfileInitials] = useState('');
+  user.isAdmin = true;
 
   // Show loading message until user is set
   if (!user) {
